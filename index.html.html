@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muzy Fotografia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style id="css">
+:root{--bg:#f6f1ea;--bg2:#ece4d8;--ink:#1b1713;--mute:#6b6258;--gold:#a8812f;--card:#fffaf2;--line:#d9cdbb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14110e;--bg2:#1c1814;--ink:#f1e9dc;--mute:#a79c8d;--gold:#d3a94e;--card:#201b16;--line:#3a3128}}
+:root[data-theme="dark"]{--bg:#14110e;--bg2:#1c1814;--ink:#f1e9dc;--mute:#a79c8d;--gold:#d3a94e;--card:#201b16;--line:#3a3128}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--ink);font:300 17px/1.7 'Jost',system-ui,sans-serif}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;line-height:1.1}
+h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:.6rem}
+a{color:inherit}
+header.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:.9rem 1.2rem;padding-top:calc(.9rem + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.14em;text-decoration:none;text-transform:uppercase}
+.logo b{color:var(--gold);font-weight:400}
+nav{display:flex;gap:1.1rem;flex-wrap:wrap;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;align-items:center}
+nav a{text-decoration:none;color:var(--mute)}nav a:hover{color:var(--gold)}
+nav .lg{border:1px solid var(--gold);color:var(--gold);background:none;padding:.3rem .8rem;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+section{padding:5rem 1.4rem;max-width:1100px;margin:auto}
+.eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.hero{min-height:85vh;display:flex;flex-direction:column;justify-content:center;max-width:none;background:radial-gradient(ellipse at 70% 30%,#3b2d1a 0%,#14110e 70%);color:#f1e9dc;padding-left:max(1.4rem,calc((100% - 1100px)/2))}
+.hero h1{font-size:clamp(3rem,10vw,7rem);letter-spacing:.04em}.hero h1 i{color:#d3a94e}
+.hero p{max-width:34rem;margin:1.2rem 0 2rem;color:#cfc4b3}
+.btn{display:inline-block;padding:.85rem 1.8rem;border:1px solid var(--gold);background:var(--gold);color:#14110e;text-decoration:none;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+.btn.ghost{background:transparent;color:inherit;margin-left:.6rem}
+.alt{background:var(--bg2);max-width:none}.alt>div{max-width:1100px;margin:auto}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;margin-top:2rem}
+.card{background:var(--card);border:1px solid var(--line);padding:1.8rem;text-align:left;color:inherit;font:inherit}
+button.card{cursor:pointer}button.card:hover{border-color:var(--gold)}
+.card h3{font-size:1.7rem;margin-bottom:.5rem}
+.card p,.mute{color:var(--mute);font-size:.95rem}
+.more{color:var(--gold);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.8rem;margin-top:2rem}
+.ph{position:relative;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:1rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#f1e9dc;background:linear-gradient(160deg,var(--c1,#6b4a2a),#14110e) center/cover;border:1px solid var(--line);text-decoration:none;overflow:hidden}
+.ph span{background:rgba(0,0,0,.45);padding:.1rem .6rem}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph .del{position:absolute;top:.5rem;right:.5rem;background:#a33;color:#fff;border:0;padding:.3rem .6rem;cursor:pointer;z-index:2}
+form.f{display:grid;gap:1rem;margin-top:2rem;max-width:640px}
+input,select,textarea{width:100%;padding:.8rem;background:var(--card);color:var(--ink);border:1px solid var(--line);font:inherit}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;align-items:center;margin-top:2rem}
+#qr{background:#fff;padding:12px;display:inline-block}
+footer{text-align:center;padding:2.5rem 1rem;color:var(--mute);font-size:.8rem;letter-spacing:.12em;border-top:1px solid var(--line)}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:1rem}
+.ov.on{display:flex}
+.modal{background:var(--card);border:1px solid var(--gold);max-width:560px;width:100%;max-height:85vh;overflow:auto;padding:2rem;position:relative}
+.modal h3{font-size:2.2rem;margin-bottom:.6rem}
+.modal .x{position:absolute;top:.6rem;right:.9rem;background:none;border:0;color:var(--ink);font-size:1.6rem;cursor:pointer}
+.sub{border-top:1px solid var(--line);padding:1rem 0}.sub h4{font:500 1.05rem 'Jost',sans-serif;color:var(--gold)}
+.sub a{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.bar{background:var(--bg2);border:1px dashed var(--gold);padding:1rem;margin:1.2rem 0;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+#chatBtn{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;border:0;background:var(--gold);color:#14110e;font-size:1.5rem;cursor:pointer}
+#chat{position:fixed;right:1rem;bottom:calc(5.2rem + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 2rem));background:var(--card);border:1px solid var(--line);display:none;flex-direction:column;max-height:70vh}
+#chat.on{display:flex}
+#chat h5{padding:.8rem 1rem;font:400 1.2rem 'Cormorant Garamond',serif;background:var(--bg2)}
+#log{padding:1rem;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:.6rem;font-size:.9rem;min-height:160px}
+.m{padding:.55rem .8rem;max-width:88%;background:var(--bg2)}.m.u{align-self:flex-end;background:var(--gold);color:#14110e}
+.q{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1rem .6rem}
+.q button{border:1px solid var(--gold);background:none;color:var(--ink);padding:.3rem .7rem;font:inherit;font-size:.8rem;cursor:pointer}
+#cf{display:flex;border-top:1px solid var(--line)}#cf input{border:0}#cf button{border:0;background:var(--gold);padding:0 1rem;cursor:pointer}
+</style>
+</head>
+<body>
+<template id="tpl">
+<header class="top">
+<a class="logo" href="#inicio">Muzy <b>Fotografia</b></a>
+<nav><a href="#quem">Quem somos</a><a href="#servicos">Serviços</a><a href="#missao">Missão</a><a href="#portfolio">Portfólio</a><a href="#orcamento">Orçamento</a><a href="#contato">Contato</a><button class="lg" id="login">Entrar</button></nav>
+</header>
+<main id="home">
+<section class="hero" id="inicio">
+<div class="eyebrow">Fotografia profissional</div>
+<h1>Muzy<br><i>Fotografia</i></h1>
+<p>Transformamos momentos em memórias eternas. Olhar sensível, luz natural e cuidado em cada detalhe.</p>
+<div><a class="btn" href="#orcamento">Pedir orçamento</a><a class="btn ghost" href="#portfolio">Ver portfólio</a></div>
+</section>
+<section id="quem"><div class="eyebrow">Quem somos</div><h2>Um olhar sensível por trás da lente</h2>
+<p class="mute" style="max-width:42rem">A Muzy Fotografia nasceu da paixão por registrar emoções reais. Atuamos em ensaios, casamentos, eventos e fotografia comercial, com atendimento próximo e entrega profissional.</p></section>
+<section class="alt" id="servicos"><div><div class="eyebrow">Nossos serviços</div><h2>O que fazemos</h2><p class="mute">Toque em um serviço para saber mais.</p><div class="three" id="svc"></div></div></section>
+<section id="missao"><div class="eyebrow">Nossa missão</div><h2>Eternizar o que importa</h2>
+<div class="three"><div class="card"><h3>Missão</h3><p>Criar imagens autênticas que contem a história de cada cliente com arte e sensibilidade.</p></div>
+<div class="card"><h3>Visão</h3><p>Ser referência em fotografia humanizada e de alta qualidade.</p></div>
+<div class="card"><h3>Valores</h3><p>Respeito, pontualidade, criatividade e carinho em cada clique.</p></div></div></section>
+<section class="alt" id="portfolio"><div><div class="eyebrow">Portfólio</div><h2>Trabalhos selecionados</h2><div class="grid" id="pt"></div></div></section>
+<section id="orcamento"><div class="eyebrow">Orçamento</div><h2>Vamos conversar sobre o seu projeto</h2>
+<form class="f" id="orc"><input id="n" placeholder="Seu nome" required><input id="e" type="email" placeholder="Seu e-mail" required>
+<select id="s"><option>Ensaio externo</option><option>Ensaio de estúdio</option><option>Ensaio artístico</option><option>Casamento</option><option>Evento</option><option>Comercial</option></select>
+<input id="d" placeholder="Data prevista (opcional)"><textarea id="t" rows="4" placeholder="Conte um pouco sobre o que você imagina"></textarea>
+<button class="btn" type="submit">Enviar pelo WhatsApp</button></form></section>
+<section class="alt" id="contato"><div><div class="eyebrow">Contato</div><h2>Fale com a Muzy</h2>
+<div class="contact"><div><p>📱 <a id="tel" href="#"></a></p><p>✉️ <a id="mail" href="#"></a></p><p>📷 <a id="ig" href="#" target="_blank" rel="noopener"></a></p></div>
+<div><div id="qr"></div><p class="mute" style="margin-top:.6rem">Escaneie e siga no Instagram</p></div></div></div></section>
+</main>
+<main id="gal" hidden><section><a href="#portfolio" class="more">← Voltar ao portfólio</a><h2 id="gt" style="margin-top:1rem"></h2><p class="mute" id="gd"></p><div id="adm"></div><div class="grid" id="gg"></div></section></main>
+<footer>© <span id="y"></span> MUZY FOTOGRAFIA · TODOS OS DIREITOS RESERVADOS</footer>
+<div class="ov" id="ov"><div class="modal" id="md"></div></div>
+<button id="chatBtn" aria-label="Abrir chat">💬</button>
+<div id="chat"><h5>Muzy Assistente</h5><div id="log"></div><div class="q" id="qs"></div><form id="cf"><input id="ci" placeholder="Digite sua dúvida…" autocomplete="off"><button>➤</button></form></div>
+</template>
+<div id="root"></div>
+<script id="data" type="application/json">{"g":{}}</script>
+<script id="app">
+var C={tel:"(21) 99999-9999",wa:"5521999999999",mail:"contato@muzyfotografia.com.br",ig:"muzyfotografia"};
+var CATS={externo:["Ensaio externo","Fotos ao ar livre, com luz natural, em praias, parques e cenários urbanos. Leve e espontâneo.","#6b4a2a"],
+estudio:["Ensaio de estúdio","Ambiente controlado, iluminação profissional e fundos variados. Ideal para books e retratos.","#3d4a46"],
+artistico:["Ensaio artístico","Conceito, figurino e direção de arte para imagens autorais e cheias de personalidade.","#4a3a4f"],
+casamento:["Casamento","Cobertura completa da cerimônia e da festa, com olhar delicado para cada emoção.","#7a5a3a"],
+eventos:["Eventos","Aniversários, formaturas e eventos corporativos registrados com agilidade e discrição.","#5a4a2a"],
+comercial:["Comercial","Produtos, moda, gastronomia e retratos profissionais para valorizar sua marca.","#2f3f4a"]};
+var SV=[["Ensaios","Escolha o estilo que combina com você.",["externo","estudio","artistico"]],["Casamentos","Seu grande dia, eternizado.",["casamento"]],["Eventos","Cada momento, registrado.",["eventos"]],["Comercial","Imagens que vendem sua marca.",["comercial"]]];
+var D=JSON.parse(document.getElementById("data").textContent);D.g=D.g||{};
+var admin=false,root=document.getElementById("root");
+var tpl=document.getElementById("tpl");root.appendChild(tpl.content.cloneNode(true));
+var $=function(i){return root.querySelector("#"+i)};
+var okId=function(x){return /^[0-9a-f]{32}$/.test(x)};
+function imgs(c){return (D.g[c]||[]).filter(okId)}
+function el(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function tile(c){var a=el("a","ph");a.href="#p-"+c;a.style.setProperty("--c1",CATS[c][2]);var f=imgs(c)[0];if(f){var i=el("img");i.src="/_blob/"+f;i.alt=CATS[c][0];i.loading="lazy";a.appendChild(i)}a.appendChild(el("span",null,CATS[c][0]));return a}
+function build(){
+ var s=$("svc");SV.forEach(function(v,k){var b=el("button","card");b.appendChild(el("h3",null,v[0]));b.appendChild(el("p",null,v[1]));b.appendChild(el("span","more","Saiba mais →"));b.onclick=function(){modal(k)};s.appendChild(b)});
+ var p=$("pt");Object.keys(CATS).forEach(function(c){p.appendChild(tile(c))});
+}
+function modal(k){var v=SV[k],m=$("md");m.textContent="";var x=el("button","x","×");x.onclick=close;m.appendChild(x);m.appendChild(el("h3",null,v[0]));
+ v[2].forEach(function(c){var d=el("div","sub");d.appendChild(el("h4",null,CATS[c][0]));d.appendChild(el("p","mute",CATS[c][1]));var a=el("a",null,"Ver portfólio →");a.href="#p-"+c;a.onclick=close;d.appendChild(a);m.appendChild(d)});
+ var o=el("a","btn","Pedir orçamento");o.href="#orcamento";o.onclick=close;o.style.marginTop="1rem";m.appendChild(o);$("ov").classList.add("on")}
+function close(){$("ov").classList.remove("on")}
+$("ov").addEventListener("click",function(e){if(e.target===$("ov"))close()});
+function route(){var h=location.hash.slice(1),c=h.indexOf("p-")===0?h.slice(2):null;
+ if(c&&CATS[c]){$("home").hidden=true;$("gal").hidden=false;showGal(c);window.scrollTo(0,0)}else{$("home").hidden=false;$("gal").hidden=true}}
+function showGal(c){$("gt").textContent=CATS[c][0];$("gd").textContent=CATS[c][1];var g=$("gg");g.textContent="";var a=$("adm");a.textContent="";
+ var L=imgs(c);if(!L.length)g.appendChild(el("p","mute","Fotos em breve."));
+ L.forEach(function(id){var d=el("div","ph");var i=el("img");i.src="/_blob/"+id;i.alt=CATS[c][0];i.loading="lazy";d.appendChild(i);
+  if(admin){var b=el("button","del","Remover");b.onclick=function(){if(confirm("Remover esta foto?")){D.g[c]=L.filter(function(x){return x!==id});save()}};d.appendChild(b)}g.appendChild(d)});
+ if(admin){var bar=el("div","bar");bar.appendChild(el("b",null,"Modo edição"));var f=el("input");f.type="file";f.accept="image/*";f.multiple=true;f.style.width="auto";var st=el("span","mute","");
+  f.onchange=async function(){try{var as=await claude.use("assets");if(!as){st.textContent="Upload indisponível.";return}var n=0;D.g[c]=imgs(c).slice();
+   for(var k=0;k<f.files.length;k++){st.textContent="Enviando "+(k+1)+" de "+f.files.length+"…";var r=await as.upload(f.files[k]);D.g[c].push(r.id);n++}
+   if(n)save()}catch(e){st.textContent="Erro no envio. Tente novamente."}};
+  bar.appendChild(f);bar.appendChild(st);a.appendChild(bar)}}
+async function save(){try{var ar=await claude.use("artifact");if(!ar){alert("Não foi possível salvar.");return}
+ var json=JSON.stringify(D).replace(/</g,"\\u003c");
+ var head=document.head.querySelector("style#css");
+ var html='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Muzy Fotografia</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"><\/script><style id="css">'+head.textContent+'</style></head><body><template id="tpl">'+tpl.innerHTML+'</template><div id="root"></div><script id="data" type="application/json">'+json+'<\/script><script id="app">'+document.getElementById("app").textContent+'<\/script></body></html>';
+ await ar.publish(html)}catch(e){alert("Não foi possível salvar as alterações.")}}
+$("login").onclick=async function(){var u=await claude.use("user");
+ if(u&&u.canEdit()){admin=!admin;this.textContent=admin?"Sair da edição":"Entrar";route()}
+ else{var m=$("md");m.textContent="";var x=el("button","x","×");x.onclick=close;m.appendChild(x);m.appendChild(el("h3",null,"Área restrita"));m.appendChild(el("p","mute","Apenas a Muzy pode editar o site. Abra esta página pela sua conta claude.ai (a mesma que criou o site) e toque em Entrar novamente."));$("ov").classList.add("on")}};
+var igUrl="https://instagram.com/"+C.ig;
+$("tel").textContent=C.tel;$("tel").href="tel:+"+C.wa;$("mail").textContent=C.mail;$("mail").href="mailto:"+C.mail;$("ig").textContent="@"+C.ig;$("ig").href=igUrl;$("y").textContent=new Date().getFullYear();
+try{new QRCode($("qr"),{text:igUrl,width:150,height:150})}catch(e){$("qr").textContent=igUrl}
+$("orc").addEventListener("submit",function(ev){ev.preventDefault();var v=function(i){return $(i).value};
+ window.open("https://wa.me/"+C.wa+"?text="+encodeURIComponent("Olá, Muzy Fotografia! Meu nome é "+v("n")+" ("+v("e")+"). Interesse: "+v("s")+". Data: "+(v("d")||"a definir")+". "+v("t")),"_blank")});
+var R=[[/servi|ensaio|fazem|trabalh/,"Fazemos ensaios (externo, estúdio e artístico), casamentos, eventos e fotografia comercial."],[/pre[çc]o|valor|or[çc]amento|quanto/,"Cada projeto é personalizado. Preencha o formulário de orçamento e respondemos pelo WhatsApp!"],[/prazo|entrega|tempo/,"A entrega costuma levar de 7 a 20 dias, conforme o serviço."],[/contato|telefone|whats|mail|insta/,"Telefone: "+C.tel+" · E-mail: "+C.mail+" · Instagram: @"+C.ig],[/oi|ol[aá]|bom dia|boa tarde|boa noite/,"Olá! Como posso ajudar? 😊"]];
+var log=$("log");function say(t,u){var d=el("div","m"+(u?" u":""),t);log.appendChild(d);log.scrollTop=log.scrollHeight}
+function ask(t){say(t,1);var a="Não entendi bem. Pergunte sobre serviços, orçamento, prazo ou contato.";for(var i=0;i<R.length;i++){if(R[i][0].test(t.toLowerCase())){a=R[i][1];break}}setTimeout(function(){say(a)},300)}
+["Serviços","Orçamento","Prazo","Contato"].forEach(function(l){var b=el("button",null,l);b.onclick=function(){ask(l)};$("qs").appendChild(b)});
+say("Olá! Sou o assistente da Muzy Fotografia. Como posso ajudar?");
+$("chatBtn").onclick=function(){$("chat").classList.toggle("on")};
+$("cf").addEventListener("submit",function(e){e.preventDefault();var i=$("ci");if(i.value.trim()){ask(i.value.trim());i.value=""}});
+build();route();window.addEventListener("hashchange",route);
+</script>
+</body>
+</html>
